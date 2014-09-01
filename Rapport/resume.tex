@@ -1,0 +1,13 @@
+\documentclass[rapport.tex]{subfiles}
+
+\begin{document}
+
+\chapter*{Resumé}
+
+I dette projekt bliver der forsøgt udviklet en styring til en pan og tilt-opstilling. Opstillingen opdeles i to delsystemer: System A, hvor der reguleres efter en vinkelhastighed og system B, som reguleres efter en position.
+
+Bevægelse registreres med hall sensorer i de motorer, der kontrollerer opstillingen. Et referencepunkt generes ud fra to hall sensorer, der er fikseret i hvert delsystem. Behandling af disse signaler foregår i en FPGA. Disse oplysninger sendes via SPI til en mikroprocessor, som står for selve reguleringen af de to systemer. Den beregner heraf optimale duty cycles, som sendes tilbage til FPGA'en. Her er implementeret to PWM-generatorer, som hver styrer en H-bro, der så endelig leverer energi til motorerne.
+
+Der forsøges på at modellere system A, hvorfra der designes en PI-regulator. Det analoge løsningsforslag ser glimrende ud, men da samplingen medregnes, loves der bål og brand - et ustabilt system. Med lidt tilpasning, ender det hele ud med et stabilt reguleringssystem.
+
+\end{document}
